@@ -10,17 +10,17 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    var itemArray = ["Find Mike", "Buy Egg", "Destroy Dameon"]
+    var itemArray = ["Find Mike", "Buy Egg", "Destroy Dameon", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "h", "i", "j", "k", "l", "m", "n", "h", "i", "j", "k", "l", "m", "n"]
     
     let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let items = defaults.array(forKey: "TodoListArray") as? [String]{
-            itemArray = items
-        }
-        
+//        if let items = defaults.array(forKey: "TodoListArray") as? [String]{
+//            itemArray = items
+//        }
+//
     }
     
     
