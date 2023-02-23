@@ -20,23 +20,7 @@ class TodoListViewController: UITableViewController {
         
         //print(dataFilePath)
         
-        
-        let newItem = Item()
-        newItem.title = "Find Mike"
-        itemArray.append(newItem)
-        
-        let newItem2 = Item()
-        newItem2.title = "Buy Egg"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Destroy Dameon"
-        itemArray.append(newItem3)
-        
-        
-//        if let items = defaults.array(forKey: "TodoListArray") as? [Item]{
-//            itemArray = items
-//        }
+        loadItems()
         
     }
     
@@ -119,6 +103,7 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Model Manupulation Method
     
+    //save item to document pList file
     func saveItems() {
         let encoder = PropertyListEncoder()
         
@@ -130,6 +115,19 @@ class TodoListViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    //load items from document pList file
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do{
+                itemArray = try decoder.decode([Item].self, from: data)
+            }catch{
+                print("Error decoding item array, \(error)")
+            }
+            
+        }
     }
 }
 
