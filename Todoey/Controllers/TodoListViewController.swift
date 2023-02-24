@@ -15,16 +15,19 @@ class TodoListViewController: UITableViewController {
     
     //context to persist data to database(Core data/Sqllite)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
-    //Path to the documentDirectory for another PList
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Path to the documentDirectory for our PList and database
+        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+        
         //print(dataFilePath)
         
-        //loadItems()
+        loadItems()
         
     }
     
@@ -109,7 +112,7 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Model Manupulation Method
     
-    //save item to document pList file
+    //save/Create item to database
     func saveItems() {
         
         do{
@@ -121,17 +124,15 @@ class TodoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    //load items from document pList file
-//    func loadItems(){
-//        if let data = try? Data(contentsOf: dataFilePath!){
-//            let decoder = PropertyListDecoder()
-//            do{
-//                itemArray = try decoder.decode([Item].self, from: data)
-//            }catch{
-//                print("Error decoding item array, \(error)")
-//            }
-//
-//        }
-//    }
+    //load/Read items from database
+    func loadItems(){
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do{
+            itemArray = try context.fetch(request)
+        }catch{
+            print("Error fetching data from context \(error)")
+        }
+        
+    }
 }
 
