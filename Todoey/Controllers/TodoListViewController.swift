@@ -62,6 +62,7 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //if item.done of the row is true/false then make it the opposite of its current value : refactor for the if-else statement
+        //Update data
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
         
