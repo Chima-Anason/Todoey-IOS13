@@ -58,7 +58,7 @@ class CategoryViewController: UITableViewController {
             
             self.categoryArray.append(newCategory)
             
-            self.saveItems()
+            self.saveCategories()
         }
         
         //Add UITextField to the alert
@@ -80,7 +80,7 @@ class CategoryViewController: UITableViewController {
     //MARK: - Model Manupulation Method
     
     //save/Create item to database
-    func saveItems() {
+    func saveCategories() {
         
         do{
             try context.save()
