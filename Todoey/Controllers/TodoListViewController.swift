@@ -25,6 +25,7 @@ class TodoListViewController: UITableViewController{
         //Path to the documentDirectory for our PList and database
         let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
         
+        
         //print(dataFilePath)
         
         loadItems()
@@ -139,6 +140,7 @@ class TodoListViewController: UITableViewController{
             print("Error fetching data from context \(error)")
         }
         
+        tableView.reloadData()
     }
 
 }
@@ -153,16 +155,17 @@ extension TodoListViewController: UISearchBarDelegate{
         //Fetch all the item data
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         
+        
         //Query based on the searchBar.text
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        let predicate = NSPredicate(format: "title CONTAINS %@", searchBar.text!)
         
         //search results based on the query
-        //request.predicate = predicate
+        request.predicate = predicate
         
         //sort the query
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         
-        //request.sortDescriptors = [sortDescriptor]
+        request.sortDescriptors = [sortDescriptor]
         
         
         loadItems(with: request)
