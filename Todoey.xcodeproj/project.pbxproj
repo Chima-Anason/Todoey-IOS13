@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0422FBEB29B3A9D0007FA855 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422FBEA29B3A9D0007FA855 /* Data.swift */; };
 		043A5AF529A8A1A100849680 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 043A5AF329A8A1A100849680 /* DataModel.xcdatamodeld */; };
 		04E2551A29AA590E00AB6824 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2551929AA590E00AB6824 /* CategoryViewController.swift */; };
 		8600BE0FD8891D45971FC9F2 /* Pods_Todoey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCF867781BA9B00CDBAB2D /* Pods_Todoey.framework */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0422FBEA29B3A9D0007FA855 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		043A5AF429A8A1A100849680 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		04E2551929AA590E00AB6824 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B825939B3E12F0702A2C2124 /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				043A5AF329A8A1A100849680 /* DataModel.xcdatamodeld */,
+				0422FBEA29B3A9D0007FA855 /* Data.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -92,7 +95,6 @@
 				F7AB639D37CE0FC6D7D2534F /* Pods-Todoey.debug.xcconfig */,
 				B825939B3E12F0702A2C2124 /* Pods-Todoey.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -243,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E2551A29AA590E00AB6824 /* CategoryViewController.swift in Sources */,
+				0422FBEB29B3A9D0007FA855 /* Data.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */,
 				043A5AF529A8A1A100849680 /* DataModel.xcdatamodeld in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
