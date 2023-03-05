@@ -73,7 +73,8 @@ class TodoListViewController: UITableViewController{
         if let item = items?[indexPath.row]{
             do{
                 try realm.write{
-                    item.done = !item.done
+                    realm.delete(item)
+                    //item.done = !item.done
                 }
             }catch{
                 print("Error upating done status, \(error)")
@@ -82,12 +83,6 @@ class TodoListViewController: UITableViewController{
         
         
         tableView.reloadData()
-        
-        
-        
-        //Delete item when pressed
-//        context.delete(itemArray[indexPath.row])
-//        itemArray.remove(at: indexPath.row)
         
         
         tableView.deselectRow(at: indexPath, animated: true)
