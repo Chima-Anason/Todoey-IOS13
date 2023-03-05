@@ -70,9 +70,19 @@ class TodoListViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //if item.done of the row is true/false then make it the opposite of its current value : refactor for the if-else statement
-        //Update data
-        //items[indexPath.row].done = !items[indexPath.row].done
+        if let item = items?[indexPath.row]{
+            do{
+                try realm.write{
+                    item.done = !item.done
+                }
+            }catch{
+                print("Error upating done status, \(error)")
+            }
+        }
+        
+        
+        tableView.reloadData()
+        
         
         
         //Delete item when pressed
