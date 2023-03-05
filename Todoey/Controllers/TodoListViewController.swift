@@ -15,7 +15,7 @@ class TodoListViewController: UITableViewController{
     
     var selectedCategory : Category? {
         didSet{
-            loadItems()
+            //loadItems()
         }
     }
     
@@ -95,12 +95,12 @@ class TodoListViewController: UITableViewController{
             //what will happen once the user clicks the Add Item button on our UIAlert
             
             
-            let newItem = Item(context: self.context)
-            newItem.title = textField.text!
-            newItem.done = false
-            newItem.parentCategory = self.selectedCategory
-            
-            self.itemArray.append(newItem)
+//            let newItem = Item(context: self.context)
+//            newItem.title = textField.text!
+//            newItem.done = false
+//            newItem.parentCategory = self.selectedCategory
+//
+//            self.itemArray.append(newItem)
             
             self.saveItems()
             
@@ -137,65 +137,65 @@ class TodoListViewController: UITableViewController{
     }
     
     //load/Read items from database
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil){
-        //let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        if let additionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-        }else{
-            request.predicate = categoryPredicate
-        }
-        
+//    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil){
+//        //let request : NSFetchRequest<Item> = Item.fetchRequest()
+//
+//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+//
+//        if let additionalPredicate = predicate {
+//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+//        }else{
+//            request.predicate = categoryPredicate
+//        }
+//
 //        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate,predicate])
 //
 //        request.predicate = compoundPredicate
-        do{
-            itemArray = try context.fetch(request)
-        }catch{
-            print("Error fetching data from context \(error)")
-        }
-        
-        tableView.reloadData()
-    }
-
+//        do{
+//            itemArray = try context.fetch(request)
+//        }catch{
+//            print("Error fetching data from context \(error)")
+//        }
+//
+//        tableView.reloadData()
+//    }
+//
 }
 
 
 
 //MARK: - SearchBar Delegate Method
-extension TodoListViewController: UISearchBarDelegate{
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        //Fetch all the item data
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-        
-        //Query based on the searchBar.text
-        let predicate = NSPredicate(format: "title CONTAINS %@", searchBar.text!)
-        
-        //search results based on the query
-        //request.predicate = predicate
-        
-        //sort the query
-        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
-        
-        request.sortDescriptors = [sortDescriptor]
-        
-        
-        loadItems(with: request, predicate: predicate)
-    }
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0{
-            loadItems()
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-        }
-    }
-}
+//extension TodoListViewController: UISearchBarDelegate{
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        //Fetch all the item data
+//        let request : NSFetchRequest<Item> = Item.fetchRequest()
+//
+//
+//        //Query based on the searchBar.text
+//        let predicate = NSPredicate(format: "title CONTAINS %@", searchBar.text!)
+//
+//        //search results based on the query
+//        //request.predicate = predicate
+//
+//        //sort the query
+//        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+//
+//        request.sortDescriptors = [sortDescriptor]
+//
+//
+//        loadItems(with: request, predicate: predicate)
+//    }
+//
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text?.count == 0{
+//            loadItems()
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//        }
+//    }
+//}
 
